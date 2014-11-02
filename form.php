@@ -1,52 +1,9 @@
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-	
 <html>
     <head>
         <title>Add row function</title>
         <script language='javascript'>
             function addRow(tableID) {
-                var table = document.getElementByI(tableID);
+                var table = document.getElementById(tableID);
                 var rowCount = table.rows.length;
                 var row = table.insertRow(rowCount);
                  
