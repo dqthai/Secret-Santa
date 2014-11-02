@@ -36,5 +36,5 @@
 			<input type="button" value="Add Person" onclick="addRow('dataTable')"/>
 			<input type="submit" value="submit" /><br />
 		</form>
-	<body>
-<html>
+	</body>
+</html>
