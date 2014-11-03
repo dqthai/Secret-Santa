@@ -1,8 +1,9 @@
 <?php
-$name = $_REQUEST['name'];
-$number = $_REQUEST['number'];
-	foreach(name as $a=> $b) {
-		echo "$name[$a]";
-		echo "$number[$a]";
+$name = $_POST['name'];
+$number = $_POST['number'];
+	foreach(array_keys($_POST['name']) as $key) {
+		echo "$name[$key]";
+		echo "$number[$key]";
 	}
+	echo "hi there";
 ?>
