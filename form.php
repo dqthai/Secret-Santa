@@ -24,15 +24,19 @@
     </head>
     <body>
         <form method="post" action="process.php">
-            <table id="dataTable" width="800px" border="1">
+            <table id="dataTable" class="form" width="800px" border="1">
+            	  <tbody>
                 <tr>
-                    <td>Name</td>
-                    <td>Number</td>
+                    <td>
+                    	<label>Name</label>
+                    	<input type="text" name="name[]">
+                    </td>
+                    <td>
+                    	<label>Number</label>
+                    	<input type="text" name="number[]">
+                    </td>
                 </tr>
-                <tr>
-                    <td><input type="text" name="name[]"></td>
-                    <td><input type="text" name="number[]"></td>
-                </tr>
+                </tbody>
             </table>
             <input type="button" value="Add Person" onclick="addRow('dataTable')"/>
             <input type="submit" value="register" /><br />
