@@ -10,13 +10,13 @@
                 var cell1 = row.insertCell(0);
                 var element1 = document.createElement("input");
                 element1.type = "text";
-                element1.name = "txtbox[]";
+                element1.name = "name[]";
                 cell1.appendChild(element1);
                  
                 var cell2 = row.insertCell(1);
                 var element2 = document.createElement("input");
                 element2.type = "text";
-                element2.name = "txtbox[]";
+                element2.name = "number[]";
                 cell2.appendChild(element2);
                  
             }
@@ -30,8 +30,8 @@
                     <td>Number</td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="name"></td>
-                    <td><input type="text" name="number"></td>
+                    <td><input type="text" name="name[]"></td>
+                    <td><input type="text" name="number[]"></td>
                 </tr>
             </table>
             <input type="button" value="Add Person" onclick="addRow('dataTable')"/>
