@@ -6,13 +6,19 @@
                 var table = document.getElementById(tableID);
                 var rowCount = table.rows.length;
                 var row = table.insertRow(rowCount);
-                
-                var colCount = table.rows[0].cells.length;
-                for(var i = 0; i<colCount; i++) {
-                	var newcell = row.insertCell(i);
-                	newcell.innterHTML = table.rows[0].cells[i].innerHTML;
-                }
-              
+                 
+                var cell1 = row.insertCell(0);
+                var element1 = document.createElement("input");
+                element1.type = "text";
+                element1.name = "name[]";
+                cell1.appendChild(element1);
+                 
+                var cell2 = row.insertCell(1);
+                var element2 = document.createElement("input");
+                element2.type = "text";
+                element2.name = "number[]";
+                cell2.appendChild(element2);
+                 
             }
         </script>
     </head>
@@ -26,7 +32,7 @@
                     	<input type="text" name="name[]">
                     </td>
                     <td>
-                    	<label>Number</label>
+                    	<label for="number">Number</label>
                     	<input type="text" name="number[]">
                     </td>
                 </tr>
