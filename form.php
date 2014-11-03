@@ -23,7 +23,7 @@
         </script>
     </head>
     <body>
-        <form method="post" action="something.php">
+        <form method="post" action="process.php">
             <table id="dataTable" width="800px" border="1">
                 <tr>
                     <td>Name</td>
