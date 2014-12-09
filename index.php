@@ -192,7 +192,7 @@ if($_POST['count'] && $_POST['count'] > 0){
 					<div class='header'>Setup</div>
 					<div class='row'>
 						<div class='seg'>Amount to pay:</div>
-						£<input name='amount' value='5'>
+						$<input name='amount' value='5'>
 					</div>
 				</div>
 		
