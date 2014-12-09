@@ -1,11 +1,4 @@
 <?php
-/**
- * PHP Secret Santa
- * A very simple PHP based Secret Santa Script.
- *
- * @Author Carl Saggs (2011)
- * @license MIT License
- */
  
 //Very very basic email validation (basically, does it contain an '@')
 function badEmailValidate($email){
@@ -202,17 +195,10 @@ if($_POST['count'] && $_POST['count'] > 0){
 						£<input name='amount' value='5'>
 					</div>
 				</div>
-				<p>
-				Please take care when filling out each persons email address as if its entered wrong they won't know who they have for secret santa.
-				Due to the risk of spamming, this script is limited to allow a maximum of 30 participants.</p>
+		
 				<input type='hidden' id='count' name='count' value='0' />
 			  
 				<input class='run' type='submit' value='Send!' onclick='confirm("Are you sure you want to send the secret santa emails now?")'/>
 			</form>
-			
-		</div>
-		<p class='right_under'>
-			Created by <a href='http://userbag.co.uk' target='_blank'>Userbag.co.uk</a>
-		</p>
 	</body>
 </html>
