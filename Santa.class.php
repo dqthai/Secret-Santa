@@ -1,4 +1,6 @@
 <?php
+require 'vendor/autoload.php';
+use Mailgun\Mailgun;
 /*
  * PHP Secret Santa
  * A very simple PHP based Secret Santa Script.
@@ -150,7 +152,18 @@ Class SecretSanta {
 			//Log that its sent
 			$this->sent_emails[] = $giver['email'];
 			//Send em via normal PHP mail method
-			mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
+			//mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
+			# Instantiate the client.
+$mgClient = new Mailgun('key-3ax6xnjp29jd6fds4gc373sgvjxteol0');
+$domain = "app31198679.mailgun.org";
+
+# Make the call to the client.
+$result = $mgClient->sendMessage($domain, array(
+    'from'    => 'Excited User <app31198679.mailgun.org>',
+    'to'      => 'Baz <dthai1994@gmail.com>',
+    'subject' => 'Hello',
+    'text'    => 'Testing some Mailgun awesomness!'
+));
 		}	
 	}
 	
