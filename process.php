@@ -4,9 +4,11 @@ $number = $_POST['number'];
 $people = array();
 
 	foreach(array_keys($_POST['name']) as $key) {
+	  echo "$name[$key];
 	  $person = (object) array('name' => $name[$key], 'number' => $number[$key], 'giving_to' => Null);
 	  $people[] = $person;
 	  echo "$person->name  \n";
+	  echo "$name[$key];
 	}
 //Assign user with their secret santa
 
