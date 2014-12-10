@@ -157,33 +157,33 @@ Class SecretSanta {
 			//$this->sent_emails[] = $giver['email'];
 			//Send em via normal PHP mail method
 			//mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
-echo "hi";
-$mail = new PHPMailer;
+      echo "hi";
+      $mail = new PHPMailer;
 
-$mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'smtp.mailgun.org';                     // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'postmaster@app31198679.mailgun.org';   // SMTP username
-$mail->Password = 'b3144f3ea73261ff891b103fc31108e0';                           // SMTP password
-$mail->SMTPSecure = 'tls';                            // Enable encryption, only 'tls' is accepted
+      $mail->isSMTP();                                      // Set mailer to use SMTP
+      $mail->Host = 'smtp.mailgun.org';                     // Specify main and backup SMTP servers
+      $mail->SMTPAuth = true;                               // Enable SMTP authentication
+      $mail->Username = 'postmaster@app31198679.mailgun.org';   // SMTP username
+      $mail->Password = 'b3144f3ea73261ff891b103fc31108e0';                           // SMTP password
+      $mail->SMTPSecure = 'tls';                            // Enable encryption, only 'tls' is accepted
 
-$mail->From = 'me@app31198679.mailgun.org';
-$mail->FromName = 'Mailer';
-$mail->addAddress('dthai1994@gmail.com');                 // Add a recipient
+      $mail->From = 'me@app31198679.mailgun.org';
+      $mail->FromName = 'Mailer';
+      $mail->addAddress('dthai1994@gmail.com');                 // Add a recipient
 
-$mail->WordWrap = 50;                                 // Set word wrap to 50 characters
+      $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
 
-$mail->Subject = 'Hello';
-$mail->Body    = 'Testing some Mailgun awesomness';
+      $mail->Subject = 'Hello';
+      $mail->Body    = 'Testing some Mailgun awesomness';
 
-if(!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-} else {
-    echo 'Message has been sent';
-}
-	}
-	
+      if(!$mail->send()) {
+          echo 'Message could not be sent.';
+          echo 'Mailer Error: ' . $mail->ErrorInfo;
+      } else {
+          echo 'Message has been sent';
+      }
+    }	
+ }
 	/**
 	 * Get Sent Emails
 	 * Return the list of emails that have been sent via the script
