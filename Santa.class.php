@@ -160,8 +160,9 @@ Class SecretSanta {
 
         $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
 
-        $mail->Subject = 'Hello';
-        $mail->Body    = $giver['giving_to'];
+        $mail->Subject = 'Secret Santa';
+        $name = $giver['giving_to'];
+        $mail->Body    = $name;
 
         if(!$mail->send()) {
             echo 'Message could not be sent.';
