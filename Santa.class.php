@@ -161,7 +161,7 @@ Class SecretSanta {
         $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
 
         $mail->Subject = 'Secret Santa';
-        $name = $giver['giving_to'];
+        $name = $giver['giving_to']['name'];
         $mail->Body    = "$name";
 
         if(!$mail->send()) {
