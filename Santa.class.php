@@ -38,7 +38,10 @@ Class SecretSanta {
 		if(!$ok) return false;
 		//If no issues, run!
 		$matched = $this->assign_users($users_array);
-		$this->sendEmails($matched);
+		foreach( $matched as $giver){
+		  echo "{$giver['name']} is giving to {$giver['giving_to']['name']} ";
+		}
+		//$this->sendEmails($matched);
 		return true;
 	}
 	
