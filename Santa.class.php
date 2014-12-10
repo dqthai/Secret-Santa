@@ -1,6 +1,6 @@
 <?php
-require 'vendor/autoload.php';
-use Mailgun\Mailgun;
+require 'PHPMailer-master/PHPMailerAutoload.php';
+
 /*
  * PHP Secret Santa
  * A very simple PHP based Secret Santa Script.
@@ -157,17 +157,31 @@ Class SecretSanta {
 			//$this->sent_emails[] = $giver['email'];
 			//Send em via normal PHP mail method
 			//mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
-			# Instantiate the client.
-      $mgClient = new Mailgun('key-1fad70f51043013ff233d965b4d43dbf');
-      $domain = "app31198679.mailgun.org";
 
-      # Make the call to the client.
-      $result = $mgClient->sendMessage($domain, array(
-        'from'    => 'Excited User <app31198679.mailgun.org>',
-        'to'      => 'Baz <dthai1994@gmail.com>',
-        'subject' => 'Hello',
-        'text'    => 'Testing some Mailgun awesomness!'));
-		}	
+$mail = new PHPMailer;
+
+$mail->isSMTP();                                      // Set mailer to use SMTP
+$mail->Host = 'smtp.mailgun.org';                     // Specify main and backup SMTP servers
+$mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Username = 'postmaster@app31198679.mailgun.org';   // SMTP username
+$mail->Password = 'secret';                           // SMTP password
+$mail->SMTPSecure = 'tls';                            // Enable encryption, only 'tls' is accepted
+
+$mail->From = 'me@app31198679.mailgun.org';
+$mail->FromName = 'Mailer';
+$mail->addAddress('dthai1994@gmail.com');                 // Add a recipient
+
+$mail->WordWrap = 50;                                 // Set word wrap to 50 characters
+
+$mail->Subject = 'Hello';
+$mail->Body    = 'Testing some Mailgun awesomness';
+
+if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'Message has been sent';
+}
 	}
 	
 	/**
