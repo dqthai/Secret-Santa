@@ -155,13 +155,13 @@ Class SecretSanta {
         $mail->SMTPSecure = 'tls';                            // Enable encryption, only 'tls' is accepted
 
         $mail->From = 'me@app31198679.mailgun.org';
-        $mail->FromName = 'Mailer';
+        $mail->FromName = 'Santa Claus';
         $mail->addAddress($giver['email']);                 // Add a recipient
 
         $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
 
         $mail->Subject = 'Hello';
-        $mail->Body    = 'Testing some Mailgun awesomness';
+        $mail->Body    = $giver['giving_to'];
 
         if(!$mail->send()) {
             echo 'Message could not be sent.';
