@@ -39,7 +39,7 @@ Class SecretSanta {
 		//If no issues, run!
 		$matched = $this->assign_users($users_array);
 		foreach( $matched as $giver){
-		  echo "{$giver['name']} is giving to {$giver['giving_to']['name']} ";
+		  echo "{$giver['name']} is giving to {$giver['giving_to']['name']}\n ";
 		}
 		$this->sendEmails($matched);
 		return true;
@@ -157,7 +157,6 @@ Class SecretSanta {
 			//$this->sent_emails[] = $giver['email'];
 			//Send em via normal PHP mail method
 			//mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
-      echo "hi";
       $mail = new PHPMailer;
 
       $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -169,7 +168,7 @@ Class SecretSanta {
 
       $mail->From = 'me@app31198679.mailgun.org';
       $mail->FromName = 'Mailer';
-      $mail->addAddress('dthai1994@gmail.com');                 // Add a recipient
+      $mail->addAddress($giver['email']);                 // Add a recipient
 
       $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
 
