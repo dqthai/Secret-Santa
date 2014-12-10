@@ -1,5 +1,16 @@
 <?php
- 
+require 'vendor/autoload.php';
+use Mailgun\Mailgun;
+
+     $mgClient = new Mailgun('key-1fad70f51043013ff233d965b4d43dbf');
+      $domain = "app31198679.mailgun.org";
+
+      # Make the call to the client.
+      $result = $mgClient->sendMessage($domain, array(
+        'from'    => 'Excited User <app31198679.mailgun.org>',
+        'to'      => 'Baz <dthai1994@gmail.com>',
+        'subject' => 'Hello',
+        'text'    => 'Testing some Mailgun awesomness!'));
  //Very very basic email validation (basically, does it contain an '@')
 function badEmailValidate($email){
 	if(strpos($email,'@') != false) return true;
