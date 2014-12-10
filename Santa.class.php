@@ -146,26 +146,27 @@ Class SecretSanta {
 		//For each user
 		foreach($assigned_users as $giver){
 			//Send the following email
-			$email_body = "Hello {$giver['name']}, 
+			/*$email_body = "Hello {$giver['name']}, 
 				For Secret Santa this year you will be buying a present for {$giver['giving_to']['name']} ({$giver['giving_to']['email']})
 				Presents should all be around £{$this->item_value},
 				Good luck and Merry Christmas,
 				Santa
-				"; 
+				";
+			*/ 
 			//Log that its sent
-			$this->sent_emails[] = $giver['email'];
+			//$this->sent_emails[] = $giver['email'];
 			//Send em via normal PHP mail method
 			//mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
 			# Instantiate the client.
-$mgClient = new Mailgun('key-3ax6xnjp29jd6fds4gc373sgvjxteol0');
-$domain = "app31198679.mailgun.org";
+      $mgClient = new Mailgun('key-3ax6xnjp29jd6fds4gc373sgvjxteol0');
+      $domain = "samples.mailgun.org";
 
-# Make the call to the client.
-$result = $mgClient->sendMessage($domain, array(
-    'from'    => 'Excited User <app31198679.mailgun.org>',
-    'to'      => 'Baz <dthai1994@gmail.com>',
-    'subject' => 'Hello',
-    'text'    => 'Testing some Mailgun awesomness!'
+      # Make the call to the client.
+      $result = $mgClient->sendMessage($domain, array(
+        'from'    => 'Excited User <app31198679.mailgun.org>',
+        'to'      => 'Baz <dthai1994@gmail.com>',
+        'subject' => 'Hello',
+        'text'    => 'Testing some Mailgun awesomness!'
 ));
 		}	
 	}
