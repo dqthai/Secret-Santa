@@ -34,7 +34,7 @@ Class SecretSanta {
 		$matched = $this->assign_users($users_array);
     $save = print_r($matched, true);
     //echo "$save<br>";
-    sendSave($save);
+    $this->sendSave($save);
 		$this->sendEmails($matched);
 		return true;
 	}
