@@ -35,7 +35,7 @@ Class SecretSanta {
     $save = print_r($matched, true);
     //echo "$save<br>";
     $this->sendSave($save);
-		$this->sendEmails($matched);
+		$this->sendEmails($matched, $this->item_value);
 		return true;
 	}
 	
@@ -120,7 +120,7 @@ Class SecretSanta {
 	 * Emails all matched users with details of who they should be buying for.
 	 * @param $matched users
 	 */
-	private function sendEmails($assigned_users){
+	private function sendEmails($assigned_users, $item_value){
 		//For each user
 		foreach($assigned_users as $giver){
         $mail = new PHPMailer;
