@@ -162,7 +162,7 @@ Class SecretSanta {
 
         $mail->Subject = 'Secret Santa';
         $name = $giver['giving_to'];
-        $mail->Body    = $name;
+        $mail->Body    = "$name";
 
         if(!$mail->send()) {
             echo 'Message could not be sent.';
