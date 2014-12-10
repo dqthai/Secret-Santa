@@ -146,10 +146,6 @@ Class SecretSanta {
 		//For each user
 		foreach($assigned_users as $giver){
 			//Send the following email
-			$email_body = "Hello {$giver['name']}, 
-				For Secret Santa this year you will be buying a present for {$giver['giving_to']['name']} 
-				Presents should all be around £{$this->item_value},
-				Good luck and Merry Christmas, Santa";
 
       $mail->isSMTP();                                      // Set mailer to use SMTP
       $mail->Host = 'smtp.mailgun.org';                     // Specify main and backup SMTP servers
@@ -165,8 +161,12 @@ Class SecretSanta {
       $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
 
       $mail->Subject = 'Secret Santa';
-      $mail->Body    = $email_body;
-
+     /* $mail->Body    = "Hello {$giver['name']}, 
+				For Secret Santa this year you will be buying a present for {$giver['giving_to']['name']} 
+				Presents should all be around ${$this->item_value},
+				Good luck and Merry Christmas, Santa";
+     */
+     $mail->Body = 'Testing awesomeness';
       if(!$mail->send()) {
           echo 'Message could not be sent.<br>';
           echo 'Mailer Error: ' . $mail->ErrorInfo;
