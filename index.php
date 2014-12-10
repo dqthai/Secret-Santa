@@ -30,15 +30,10 @@ if($_POST['count'] && $_POST['count'] > 0){
 	//Create Object and set values
 	$santa = new SecretSanta();
 	$santa->setAmount($amount);
-	$santa->setTitle('Secret Santa');//Title of emails sent by tool
-	$santa->setFrom('Santa','santa@myDomain.com');//Address emails claim to be sent from.
+
 	//Run on $users, and show Success message on success
 	if($santa->run($users)){
 		echo 'Secret Santa emails have successfully been sent to the following email addresses:<br/>';
-		$sent = $santa->getSentEmails();
-		foreach($sent as $mail){
-			echo $mail.'<br/>';
-		}
 	}
 	die();
 }

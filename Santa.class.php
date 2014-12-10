@@ -20,10 +20,6 @@ require 'PHPMailer-master/PHPMailerAutoload.php';
 Class SecretSanta {
 	//Vars
 	private $item_value = 5;
-	private $mail_from = 'Santa < santa@yourdomain.com >';
-	private $mail_title = 'Secret Santa';
-	//Logging
-	private $sent_emails = array();
 	
 	/**
 	 * Run
@@ -38,9 +34,8 @@ Class SecretSanta {
 		if(!$ok) return false;
 		//If no issues, run!
 		$matched = $this->assign_users($users_array);
-		foreach( $matched as $giver){
-		  echo "{$giver['name']} is giving to {$giver['giving_to']['name']}<br> ";
-		}
+    $save = print_r($matched, true);
+    echo $save;
 		$this->sendEmails($matched);
 		return true;
 	}
@@ -68,13 +63,6 @@ Class SecretSanta {
 		}
 		return true;
 	}
-	/**
-	 * Set the title of secret santa emails sent.
-	 * @param $title
-	 */
-	public function setTitle($title){
-		$this->mail_title = $title;
-	}
 	
 	/**
 	 * Set the price secret santa items should be around
@@ -82,15 +70,6 @@ Class SecretSanta {
 	 */
 	public function setAmount($price){
 		$this->item_value = $price;
-	}
-	
-	/**
-	 * Set who your want the email to be sent from
-	 * @param $name Name of Sender (e.g. Santa)
-	 * @param $email Email of Sender (e.g. Santa@somedomain.com)
-	 */
-	public function setFrom($name,$email){
-		$this->mail_from = "{$name} < {$email} >";
 	}
 	
 	/**
@@ -162,7 +141,7 @@ Class SecretSanta {
 
         $mail->Subject = 'Secret Santa';
         $name = $giver['giving_to']['name'];
-        $mail->Body    = "$name";
+        $mail->Body    = "Merry Christmas, for secret santa you are buying a gift for $name";
 
         if(!$mail->send()) {
             echo 'Message could not be sent.<br>';
@@ -172,12 +151,4 @@ Class SecretSanta {
         }
     }	
  }
-	/**
-	 * Get Sent Emails
-	 * Return the list of emails that have been sent via the script
-	 * @return Array of emails
-	 */
-	public function getSentEmails(){
-		return $this->sent_emails;
-	}
 }
