@@ -157,16 +157,6 @@ Class SecretSanta {
 			//$this->sent_emails[] = $giver['email'];
 			//Send em via normal PHP mail method
 			//mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
-			# Instantiate the client.
-      $mgClient = new Mailgun('key-1fad70f51043013ff233d965b4d43dbf');
-      $domain = "samples.mailgun.org";
-
-      # Make the call to the client.
-      $result = $mgClient->sendMessage($domain, array(
-        'from'    => 'Excited User <app31198679.mailgun.org>',
-        'to'      => 'Baz <dthai1994@gmail.com>',
-        'subject' => 'Hello',
-        'text'    => 'Testing some Mailgun awesomness!'
 ));
 		}	
 	}
