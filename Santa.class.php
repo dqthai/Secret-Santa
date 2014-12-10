@@ -146,7 +146,7 @@ Class SecretSanta {
 		//For each user
 		foreach($assigned_users as $giver){
 			//Send the following email
-
+      echo "hi <br>";
       $mail->isSMTP();                                      // Set mailer to use SMTP
       $mail->Host = 'smtp.mailgun.org';                     // Specify main and backup SMTP servers
       $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -155,7 +155,7 @@ Class SecretSanta {
       $mail->SMTPSecure = 'tls';                            // Enable encryption, only 'tls' is accepted
 
       $mail->From = 'me@app31198679.mailgun.org';
-      $mail->FromName = 'Santa Claus';
+      $mail->FromName = 'Mailer';
       $mail->addAddress($giver['email']);                 // Add a recipient
 
       $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
@@ -166,7 +166,7 @@ Class SecretSanta {
 				Presents should all be around ${$this->item_value},
 				Good luck and Merry Christmas, Santa";
      */
-     $mail->Body = 'Testing awesomeness';
+     $mail->Body = 'Testing some Mailgun awesomness';
       if(!$mail->send()) {
           echo 'Message could not be sent.<br>';
           echo 'Mailer Error: ' . $mail->ErrorInfo;
