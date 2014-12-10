@@ -157,14 +157,14 @@ Class SecretSanta {
 			//$this->sent_emails[] = $giver['email'];
 			//Send em via normal PHP mail method
 			//mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
-
+echo "hi";
 $mail = new PHPMailer;
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
 $mail->Host = 'smtp.mailgun.org';                     // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
 $mail->Username = 'postmaster@app31198679.mailgun.org';   // SMTP username
-$mail->Password = 'secret';                           // SMTP password
+$mail->Password = 'b3144f3ea73261ff891b103fc31108e0';                           // SMTP password
 $mail->SMTPSecure = 'tls';                            // Enable encryption, only 'tls' is accepted
 
 $mail->From = 'me@app31198679.mailgun.org';
