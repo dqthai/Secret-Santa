@@ -33,7 +33,7 @@ Class SecretSanta {
 		//If no issues, run!
 		$matched = $this->assign_users($users_array);
     $save = print_r($matched, true);
-    //echo "$save<br>";
+    echo "$save<br>";
 		$this->sendEmails($matched);
 		return true;
 	}
@@ -139,7 +139,7 @@ Class SecretSanta {
 
         $mail->Subject = 'Secret Santa';
         $name = $giver['giving_to']['name'];
-        $mail->Body    = "Merry Christmas, for secret santa you are buying a gift for $name.  The price limit is $item_value.";
+        $mail->Body    = "Merry Christmas, for secret santa you are buying a gift for $name.  The price limit is $item_value";
 
         if(!$mail->send()) {
             echo 'Message could not be sent.<br>';
