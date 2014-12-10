@@ -39,7 +39,7 @@ Class SecretSanta {
 		//If no issues, run!
 		$matched = $this->assign_users($users_array);
 		foreach( $matched as $giver){
-		  echo "{$giver['name']} is giving to {$giver['giving_to']['name']}\n ";
+		  echo "{$giver['name']} is giving to {$giver['giving_to']['name']}<br> ";
 		}
 		$this->sendEmails($matched);
 		return true;
@@ -146,18 +146,10 @@ Class SecretSanta {
 		//For each user
 		foreach($assigned_users as $giver){
 			//Send the following email
-			/*$email_body = "Hello {$giver['name']}, 
-				For Secret Santa this year you will be buying a present for {$giver['giving_to']['name']} ({$giver['giving_to']['email']})
+			$email_body = "Hello {$giver['name']}, 
+				For Secret Santa this year you will be buying a present for {$giver['giving_to']['name']} 
 				Presents should all be around £{$this->item_value},
-				Good luck and Merry Christmas,
-				Santa
-				";
-			*/ 
-			//Log that its sent
-			//$this->sent_emails[] = $giver['email'];
-			//Send em via normal PHP mail method
-			//mail($giver['email'], $this->mail_title, $email_body, "From: {$this->mail_from}\r\n");
-      $mail = new PHPMailer;
+				Good luck and Merry Christmas, Santa";
 
       $mail->isSMTP();                                      // Set mailer to use SMTP
       $mail->Host = 'smtp.mailgun.org';                     // Specify main and backup SMTP servers
@@ -167,19 +159,19 @@ Class SecretSanta {
       $mail->SMTPSecure = 'tls';                            // Enable encryption, only 'tls' is accepted
 
       $mail->From = 'me@app31198679.mailgun.org';
-      $mail->FromName = 'Mailer';
+      $mail->FromName = 'Santa Claus';
       $mail->addAddress($giver['email']);                 // Add a recipient
 
       $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
 
-      $mail->Subject = 'Hello';
-      $mail->Body    = 'Testing some Mailgun awesomness';
+      $mail->Subject = 'Secret Santa';
+      $mail->Body    = $email_body;
 
       if(!$mail->send()) {
-          echo 'Message could not be sent.';
+          echo 'Message could not be sent.<br>';
           echo 'Mailer Error: ' . $mail->ErrorInfo;
       } else {
-          echo 'Message has been sent';
+          echo 'Message has been sent<br>';
       }
     }	
  }
