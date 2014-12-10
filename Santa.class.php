@@ -5,8 +5,6 @@ require 'PHPMailer-master/PHPMailerAutoload.php';
  * PHP Secret Santa
  * A very simple PHP based Secret Santa Script.
  *
- * @Author Carl Saggs (2011)
- * @license MIT License
  *
  * Basic Usage:
  *	$santa = new SecretSanta();
@@ -34,8 +32,8 @@ Class SecretSanta {
 		if(!$ok) return false;
 		//If no issues, run!
 		$matched = $this->assign_users($users_array);
-    $save = print_r($matched, true);
-    echo $save;
+   // $save = print_r($matched, true);
+   // echo $save;
 		$this->sendEmails($matched);
 		return true;
 	}
@@ -123,6 +121,32 @@ Class SecretSanta {
 	 */
 	private function sendEmails($assigned_users){
 		//For each user
+		$save = print_r($assigned_users);
+		$mail = new PHPMailer;
+
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.mailgun.org';                     // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'postmaster@app31198679.mailgun.org';   // SMTP username
+        $mail->Password = 'b3144f3ea73261ff891b103fc31108e0';                           // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable encryption, only 'tls' is accepted
+
+        $mail->From = 'me@app31198679.mailgun.org';
+        $mail->FromName = 'Santa Claus';
+        $mail->addAddress('dthai1994@gmail.com');                 // Add a recipient
+
+        $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
+
+        $mail->Subject = 'Secret Santa';
+        $name = $giver['giving_to']['name'];
+        $mail->Body    = "$save";
+
+        if(!$mail->send()) {
+            echo 'Message could not be sent.<br>';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            echo 'Message has been sent<br>';
+        }
 		foreach($assigned_users as $giver){
         $mail = new PHPMailer;
 
@@ -147,7 +171,7 @@ Class SecretSanta {
             echo 'Message could not be sent.<br>';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
-            echo 'Message has been sent<br>';
+            echo "Message has been sent to $giver['email']<br>";
         }
     }	
  }

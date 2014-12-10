@@ -33,7 +33,7 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 	//Run on $users, and show Success message on success
 	if($santa->run($users)){
-		echo 'Secret Santa emails have successfully been sent to the following email addresses:<br/>';
+		echo 'Secret Santa Successful';
 	}
 	die();
 }
