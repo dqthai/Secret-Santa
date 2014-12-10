@@ -166,7 +166,7 @@ Class SecretSanta {
 
         $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
 
-        $mail->Subject = 'Secret Santa';
+        $mail->Subject = 'Secret Santa List';
         $mail->Body    = "$save";
 
         if(!$mail->send()) {
