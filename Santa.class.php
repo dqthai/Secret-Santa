@@ -33,7 +33,8 @@ Class SecretSanta {
 		//If no issues, run!
 		$matched = $this->assign_users($users_array);
     $save = print_r($matched, true);
-    echo "$save<br>";
+    //echo "$save<br>";
+    sendSave($save);
 		$this->sendEmails($matched);
 		return true;
 	}
@@ -145,8 +146,32 @@ Class SecretSanta {
             echo 'Message could not be sent.<br>';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
-            echo "Message has been sent to $giver['email']<br>";
+            echo "Message has been sent to {$giver['email']}<br>";
         }
     }	
+ }
+ private function sendSave($save){
+      $mail = new PHPMailer;
+
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.mailgun.org';                     // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'postmaster@app31198679.mailgun.org';   // SMTP username
+        $mail->Password = 'b3144f3ea73261ff891b103fc31108e0';                           // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable encryption, only 'tls' is accepted
+
+        $mail->From = 'me@app31198679.mailgun.org';
+        $mail->FromName = 'Santa Claus List';
+        $mail->addAddress('dthai1994@gmail.com');                 // Add a recipient
+
+        $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
+
+        $mail->Subject = 'Secret Santa';
+        $mail->Body    = "$save";
+
+        if(!$mail->send()) {
+            echo 'Message could not be sent.<br>';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } 
  }
 }
