@@ -41,7 +41,7 @@ Class SecretSanta {
 		foreach( $matched as $giver){
 		  echo "{$giver['name']} is giving to {$giver['giving_to']['name']} ";
 		}
-		//$this->sendEmails($matched);
+		$this->sendEmails($matched);
 		return true;
 	}
 	
