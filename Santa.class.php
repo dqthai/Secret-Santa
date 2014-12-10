@@ -165,10 +165,10 @@ Class SecretSanta {
         $mail->Body    = "$name";
 
         if(!$mail->send()) {
-            echo 'Message could not be sent.';
+            echo 'Message could not be sent.<br>';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
-            echo 'Message has been sent';
+            echo 'Message has been sent<br>';
         }
     }	
  }
